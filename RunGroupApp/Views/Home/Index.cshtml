@@ -1,0 +1,67 @@
+﻿@using RunGroupApp.ViewModel
+@model HomeVM
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<section class="jumbotron text-center" >
+    <div class="container">
+        <h1 class="jumbotron-heading">Album</h1>
+        <p class="lead text-muted"></p>
+        <p>
+            <a href="#" class="btn btn-primary my-2">Main Call to Action</a>
+            <a href="#" class="btn btn-secondary my-2">Main Call to Action</a>
+        </p>
+    </div>
+
+</section>
+<div class="alum py-5 bg-light">
+
+    <div class="container">
+
+        <div class="row">
+            <h1 class="fw-light">Runing Club near @Model.City, @Model.State</h1>
+              @if (Model.Clubs == null)
+        {
+            <h1 class="fw-light">
+                There are no running clubs in your area! <a asp-area="" asp-controller="Account"
+                                asp-action="Login">Login</a> and create one!
+            </h1>
+        }
+        else
+        {
+            @foreach (var  item in Model.Clubs )
+            {  
+               
+                <div class="col-md-4">
+                    <div class="card  mb-4 box-shadow">
+                            <img src="@item.Image" class="bd-placeholdder-img  card-img-top" width="100%" hieght="225" alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text1">@item.Title</p>
+                            <p class="card-text">@item.Description</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                   @*  <a type="btn btn-success" asp-controller="Race" asp-action="Detail" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">View</a>
+                                    @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                                    {
+                                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Edit</a>
+                                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-secondary">Delete</a>
+                                    } *@
+                                        <button type="button" class="btn btn-outline-secondary">View</button>
+                                </div>
+                                <small class="text-muted">9 mins</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+           
+
+        }
+    </div>
+
+</div>
+
+
